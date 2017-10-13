@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/users">Go Back</a>
+    <table style="width: 500px">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Age</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <form action="/users/<%= id %>/edit" method="post">
+            <td><%= id %></td>
+            <td><input type="text" name="first_name" value="<%= first_name %>"></td>
+            <td><input type="text" name="last_name" value="<%= last_name %>"></td>
+            <td><input type="text" name="email" value="<%= email %>"></td>
+            <td><input type="text" name="age" value="<%= age %>"></td>
+            <td><input type="submit" value="Submit"></td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
