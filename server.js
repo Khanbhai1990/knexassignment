@@ -13,43 +13,10 @@ app.use(express.static(__dirname + '/static'));
 
 app.set('view engine', 'ejs');
 
-//PAGINATION TESTING
-
-
-// knex('users')
-// .count("id")
-// .then((count) => {
-  // console.log(count);
-  // myRecordsCount = count[0];
-//   knex('users')
-//   .orderBy('first_name', 'asc')
-//   .offset(0)
-//   .limit(10)
-//   .then((result) => {
-//     console.log("The count of records is: ", count[0]);
-//     console.log(result);
-//   })
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
-
-
-
-
 
 //displays all users
 app.get('/users', function(req, res) {
-  knex('users')
-  .then((result) => {
-    res.render('index', {results: result});
-  })
-  .catch((err) => {
-    console.log(err);
-    res.sendStatus(400);
-  });
-
+  res.redirect('/users/page/1');
 });
 
 app.get('/users/page/:pageNumber', function(req, res) {
@@ -64,10 +31,10 @@ app.get('/users/page/:pageNumber', function(req, res) {
     .offset((limitPerPage * pageNumber) - limitPerPage)
     .limit(limitPerPage)
     .then((result) => {
-      console.log('My count is: ', Number(recordCount[0].count), '. My result is: ', result);
       res.render('index', {
-        count: Number(recordCount[0].count),
-        results: result
+        numberOfPages: Math.ceil(Number(recordCount[0].count)/limitPerPage),
+        results: result,
+        currentPage: Number(pageNumber)
       });
     })
     .catch((err) => {
