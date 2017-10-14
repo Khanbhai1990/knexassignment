@@ -16,23 +16,23 @@ app.set('view engine', 'ejs');
 //PAGINATION TESTING
 
 
-knex('users')
-.count("id")
-.then((count) => {
+// knex('users')
+// .count("id")
+// .then((count) => {
   // console.log(count);
   // myRecordsCount = count[0];
-  knex('users')
-  .orderBy('first_name', 'asc')
-  .offset(0)
-  .limit(10)
-  .then((result) => {
-    console.log("The count of records is: ", count[0]);
-    console.log(result);
-  })
-})
-.catch((err) => {
-  console.log(err);
-});
+//   knex('users')
+//   .orderBy('first_name', 'asc')
+//   .offset(0)
+//   .limit(10)
+//   .then((result) => {
+//     console.log("The count of records is: ", count[0]);
+//     console.log(result);
+//   })
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
 
 
 
@@ -49,6 +49,36 @@ app.get('/users', function(req, res) {
     console.log(err);
     res.sendStatus(400);
   });
+
+});
+
+app.get('/users/page/:pageNumber', function(req, res) {
+  let limitPerPage = 10;
+  let pageNumber = req.params.pageNumber;
+
+  knex('users')
+  .count()
+  .then((recordCount) => {
+    knex('users')
+    .orderBy('first_name', 'asc')
+    .offset((limitPerPage * pageNumber) - limitPerPage)
+    .limit(limitPerPage)
+    .then((result) => {
+      console.log('My count is: ', Number(recordCount[0].count), '. My result is: ', result);
+      res.render('index', {
+        count: Number(recordCount[0].count),
+        results: result
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(400);
+  })
 
 });
 
