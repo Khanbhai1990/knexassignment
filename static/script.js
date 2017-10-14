@@ -1,6 +1,8 @@
 $(document).ready(function() {
   console.log('linked');
 
+  $('.modal').modal(); //MODAL initialization
+
   let newUserForm = $('.myForm')[0];
   $(newUserForm).hide();
 

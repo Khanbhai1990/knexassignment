@@ -14,8 +14,6 @@
     <% include ./partials/navbar.ejs %>
     <a id="go-back-button" href="/users" class="btn"><i id="go-back-icon" class="material-icons">navigate_before</i>Go Back</a>
 
-    
-
     <div class="edit-form container">
       <form class="" action="/users/<%= id %>/edit" method="post">
         <label for="id">ID</label>
@@ -28,7 +26,7 @@
         <input class="italic" type="text" name="email" value="<%= email %>">
         <label for="age">Age</label>
         <input class="italic" type="text" name="age" value="<%= age %>">
-        <input id="edit-form-submit-button" class="btn" type="submit" value="Submit">
+        <input class="btn" type="submit" value="Submit">
       </form>
     </div>
 

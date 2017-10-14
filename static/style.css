@@ -23,22 +23,8 @@ i {
   font-style: italic;
 }
 
-#edit-form-submit-button {
-  margin-top: 0px;
-}
-
-#add-user-icon {
-  vertical-align: bottom;
-  margin-right: 10px;
-}
-
 #add-user-button {
   margin: 20px;
-}
-
-
-#go-back-icon {
-  vertical-align: bottom;
 }
 
 #go-back-button {

@@ -6,10 +6,12 @@
     <% include ./partials/jQuery.ejs %>
     <% include ./partials/materialize.ejs %>
     <link rel="stylesheet" href="/style.css">
+
+    <script type="text/javascript" src="/script.js"></script>
+
   </head>
   <body>
     <% include ./partials/navbar.ejs %>
-
 
     <a id="go-back-button" href="/users" class="btn"><i id="go-back-icon" class="material-icons">navigate_before</i>Go Back</a>
 
@@ -35,7 +37,20 @@
         </tbody>
       </table>
       <a class="btn" href="/users/<%= id %>/edit"><i class="material-icons">edit</i>Edit</a>
-      <a class="btn red" href="/users/<%= id %>/delete"><i class="material-icons">delete_forever</i>Delete</a>
+
+      <a class="btn red modal-trigger" href="#modal1"><i class="material-icons">delete_forever</i>Delete</a>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4><i class="material-icons">warning</i></h4>
+        <p>Are you sure you would like to delete this user?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="/users/<%= id %>/delete" class="waves-effect waves-green   btn-flat red-text">Yes</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green   btn-flat">No</a>
+      </div>
     </div>
 
   </body>
