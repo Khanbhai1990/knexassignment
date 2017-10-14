@@ -11,10 +11,13 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
-    <div class="myForm container z-depth-5">
+    <div class="myForm container z-depth-5 center-align">
       <form action="/users" method="post">
         <div class="input-field">
           <label for="first_name">First Name</label>
@@ -32,7 +35,7 @@
           <label for="age">Age</label>
           <input type="text" name="age" value="">
         </div>
-        <input type="submit" name="" value="Add New User">
+        <input class="btn" type="submit" name="" value="Add New User">
       </form>
     </div>
 
