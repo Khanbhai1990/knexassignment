@@ -13,6 +13,32 @@ app.use(express.static(__dirname + '/static'));
 
 app.set('view engine', 'ejs');
 
+//PAGINATION TESTING
+
+
+knex('users')
+.count("id")
+.then((count) => {
+  // console.log(count);
+  // myRecordsCount = count[0];
+  knex('users')
+  .orderBy('first_name', 'asc')
+  .offset(0)
+  .limit(10)
+  .then((result) => {
+    console.log("The count of records is: ", count[0]);
+    console.log(result);
+  })
+})
+.catch((err) => {
+  console.log(err);
+});
+
+
+
+
+
+
 //displays all users
 app.get('/users', function(req, res) {
   knex('users')
