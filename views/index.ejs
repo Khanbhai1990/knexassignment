@@ -3,20 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Home</title>
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <% include ./partials/jQuery.ejs %>
+    <% include ./partials/materialize.ejs %>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="script.js"></script>
 
   </head>
   <body>
+    <% include ./partials/navbar.ejs %>
+
+    <div class="center">
+      <a id="add-user-button" href="" class="btn"><i id="add-user-icon" class="material-icons">person_add</i>Add New User</a>
+    </div>
+
+
     <div class="myForm container z-depth-5 center-align">
       <form action="/users" method="post">
         <div class="input-field">
@@ -35,7 +38,8 @@
           <label for="age">Age</label>
           <input type="text" name="age" value="">
         </div>
-        <input class="btn" type="submit" name="" value="Add New User">
+        <input id="create-new-user-button"class="btn" type="submit" name="" value="Add New User">
+        <a id="cancel-button" class="btn" href="">Cancel</a>
       </form>
     </div>
 
@@ -43,8 +47,8 @@
     <br>
 
 
-    <div class="myResultsDisplay">
-      <table style="width: 500px">
+    <div class="myResultsDisplay container">
+      <table class="striped center-align">
         <thead>
           <tr>
             <td>ID</td>

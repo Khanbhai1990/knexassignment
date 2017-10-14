@@ -2,31 +2,41 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title><%= first_name %> <%= last_name %>'s Profile</title>
+    <% include ./partials/jQuery.ejs %>
+    <% include ./partials/materialize.ejs %>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <a href="/users">Go Back</a>
-    <table style="width: 500px">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>First Name</td>
-          <td>Last Name</td>
-          <td>Email</td>
-          <td>Age</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= id %></td>
-          <td><%= first_name %></td>
-          <td><%= last_name %></td>
-          <td><%= email %></td>
-          <td><%= age %></td>
-        </tr>
-      </tbody>
-    </table>
-    <a href="/users/<%= id %>/edit">Edit</a>
-    <a href="/users/<%= id %>/delete">Delete</a>
+    <% include ./partials/navbar.ejs %>
+
+
+    <a id="go-back-button" href="/users" class="btn"><i id="go-back-icon" class="material-icons">navigate_before</i>Go Back</a>
+
+    <div class="user-profile container center">
+      <table class="highlight">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Age</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= id %></td>
+            <td><%= first_name %></td>
+            <td><%= last_name %></td>
+            <td><%= email %></td>
+            <td><%= age %></td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn" href="/users/<%= id %>/edit"><i class="material-icons">edit</i>Edit</a>
+      <a class="btn red" href="/users/<%= id %>/delete"><i class="material-icons">delete_forever</i>Delete</a>
+    </div>
+
   </body>
 </html>

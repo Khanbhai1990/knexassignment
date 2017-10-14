@@ -2,32 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Edit <%= first_name %> <%= last_name %>'s Information</title>
+
+    <% include ./partials/jQuery.ejs %>
+    <% include ./partials/materialize.ejs %>
+
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <a href="/users">Go Back</a>
-    <table style="width: 500px">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>First Name</td>
-          <td>Last Name</td>
-          <td>Email</td>
-          <td>Age</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <form action="/users/<%= id %>/edit" method="post">
-            <td><%= id %></td>
-            <td><input type="text" name="first_name" value="<%= first_name %>"></td>
-            <td><input type="text" name="last_name" value="<%= last_name %>"></td>
-            <td><input type="text" name="email" value="<%= email %>"></td>
-            <td><input type="text" name="age" value="<%= age %>"></td>
-            <td><input type="submit" value="Submit"></td>
-          </form>
-        </tr>
-      </tbody>
-    </table>
+
+    <% include ./partials/navbar.ejs %>
+    <a id="go-back-button" href="/users" class="btn"><i id="go-back-icon" class="material-icons">navigate_before</i>Go Back</a>
+
+    
+
+    <div class="edit-form container">
+      <form class="" action="/users/<%= id %>/edit" method="post">
+        <label for="id">ID</label>
+        <input class="italic" type="text" name="id" value="<%= id %>" disabled>
+        <label for="first_name">First Name</label>
+        <input class="italic" type="text" name="first_name" value="<%= first_name %>">
+        <label for="last_name">Last Name</label>
+        <input class="italic" type="text" name="last_name" value="<%= last_name %>">
+        <label for="email"></label>
+        <input class="italic" type="text" name="email" value="<%= email %>">
+        <label for="age">Age</label>
+        <input class="italic" type="text" name="age" value="<%= age %>">
+        <input id="edit-form-submit-button" class="btn" type="submit" value="Submit">
+      </form>
+    </div>
+
   </body>
 </html>
