@@ -46,33 +46,6 @@
     <br>
     <br>
 
-    <ul class="pagination center">
-      <% if (currentPage === 1) { %>
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-      <% } else { %>
-        <li class="waves-effect"><a href="/users/page/<%= currentPage - 1 %>"><i class="material-icons">chevron_left</i></a></li>
-      <% } %>
-
-      <% for (let i = 1; i <= numberOfPages; i++) {
-        if (i == currentPage) { %>
-          <li class="active"><a href="#!"><%= i %></a></li>
-        <% } else { %>
-          <li class="waves-effect"><a href="/users/page/<%= i %>"><%= i %></a></li>
-        <% } %>
-      <% } %>
-      <!-- <li class="active"><a href="#!">1</a></li>
-      <li class="waves-effect"><a href="#!">2</a></li>
-      <li class="waves-effect"><a href="#!">3</a></li>
-      <li class="waves-effect"><a href="#!">4</a></li>
-      <li class="waves-effect"><a href="#!">5</a></li> -->
-      <% if (currentPage === numberOfPages) { %>
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-      <% } else { %>
-        <li class="waves-effect"><a href="/users/page/<%= currentPage + 1 %>"><i class="material-icons">chevron_right</i></a></li>
-      <% } %>
-
-    </ul>
-
     <div class="myResultsDisplay container">
       <table class="striped center-align">
         <thead>
@@ -98,16 +71,29 @@
         </tbody>
       </table>
     </div>
-    <ul class="pagination center">
-      <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-      <li class="active"><a href="#!">1</a></li>
-      <li class="waves-effect"><a href="#!">2</a></li>
-      <li class="waves-effect"><a href="#!">3</a></li>
-      <li class="waves-effect"><a href="#!">4</a></li>
-      <li class="waves-effect"><a href="#!">5</a></li>
-      <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-    </ul>
 
+    <ul class="pagination center">
+      <% if (currentPage === 1) { %>
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+      <% } else { %>
+        <li class="waves-effect"><a href="/users/page/<%= currentPage - 1 %>"><i class="material-icons">chevron_left</i></a></li>
+      <% } %>
+
+      <% for (let i = 1; i <= numberOfPages; i++) {
+        if (i == currentPage) { %>
+          <li class="active"><a class="selected-page" href="#!"><%= i %></a></li>
+        <% } else { %>
+          <li class="waves-effect"><a href="/users/page/<%= i %>"><%= i %></a></li>
+        <% } %>
+      <% } %>
+
+      <% if (currentPage === numberOfPages) { %>
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+      <% } else { %>
+        <li class="waves-effect"><a href="/users/page/<%= currentPage + 1 %>"><i class="material-icons">chevron_right</i></a></li>
+      <% } %>
+
+    </ul>
 
   </body>
 </html>

@@ -23,6 +23,11 @@ i {
   font-style: italic;
 }
 
+.selected-page {
+  background-color: teal;
+  border-radius: 2px;
+}
+
 #add-user-button {
   margin: 20px;
 }
