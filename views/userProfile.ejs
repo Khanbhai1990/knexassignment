@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><%= first_name %> <%= last_name %>'s Profile</title>
+    <title><%= user.first_name %> <%= user.last_name %>'s Profile</title>
     <% include ./partials/jQuery.ejs %>
     <% include ./partials/materialize.ejs %>
     <link rel="stylesheet" href="/style.css">
@@ -28,15 +28,15 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= id %></td>
-            <td><%= first_name %></td>
-            <td><%= last_name %></td>
-            <td><%= email %></td>
-            <td><%= age %></td>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.age %></td>
           </tr>
         </tbody>
       </table>
-      <a class="btn" href="/users/<%= id %>/edit"><i class="material-icons">edit</i>Edit</a>
+      <a class="btn" href="/users/<%= user.id %>/edit"><i class="material-icons">edit</i>Edit</a>
 
       <a class="btn red modal-trigger" href="#modal1"><i class="material-icons">delete_forever</i>Delete</a>
     </div>
@@ -48,10 +48,35 @@
         <p>Are you sure you would like to delete this user?</p>
       </div>
       <div class="modal-footer">
-        <a href="/users/<%= id %>/delete" class="waves-effect waves-green   btn-flat red-text">Yes</a>
+        <a href="/users/<%= user.id %>/delete" class="waves-effect waves-green   btn-flat red-text">Yes</a>
         <a href="#!" class="modal-action modal-close waves-effect waves-green   btn-flat">No</a>
       </div>
     </div>
+
+    <div class="user-posts center z-depth-5">
+      <h5>Posts by <%= user.first_name %></h5>
+      <div class="user-posts-content">
+        <% for (let i = 0; i < posts.length; i++) { %>
+          <div class="user-individual-post teal lighten-2 hoverable">
+            <div class="">
+              <p id="content">"<%= posts[i].content %>"</p>
+            </div>
+            <div class="">
+              <a id="comments" href="#"><i id="comment-icon" class="material-icons white-text">comment</i></a>
+            </div>
+          </div>
+
+
+
+        <% } %>
+      </div>
+    </div>
+
+
+
+
+
+
 
   </body>
 </html>

@@ -35,3 +35,50 @@ i {
 #go-back-button {
   margin: 10px;
 }
+
+/*userProfile.ejs*/
+.user-posts {
+  height: 550px;
+  width: 1300px;
+  margin: 30px auto;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.user-posts-content {
+  height: 500px;
+  width: 1270px;
+  margin: 5px auto;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  justify-content: center;
+}
+
+.user-individual-post {
+  flex: 0 0 auto;
+  height: 150px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 5px;
+  display: inline-block;
+  overflow-y: scroll;
+  color: white;
+}
+
+#comments {
+  font-size: 5px;
+  text-align: right;
+}
+
+#comment-icon {
+  margin-top: 5px;
+}
+
+#content {
+  padding-top: 50px;
+  height: 115px;
+  width: 100%;
+  justify-content: center;
+  border-bottom: 1px solid white;
+}

@@ -68,8 +68,20 @@ app.post('/users', function(req, res) {
 app.get('/users/:id', function(req, res) {
   knex('users')
   .where('id', req.params.id)
-  .then((result) => {
-    res.render('userProfile', result[0]);
+  .then((user) => {
+    knex('posts')
+    .where('user_id', req.params.id)
+    .then((posts) => {
+      res.render('userProfile', {
+        user: user[0],
+        posts: posts
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    });
+
   })
   .catch((err) => {
     console.log(err);
