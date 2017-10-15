@@ -32,11 +32,17 @@ i {
   margin: 20px;
 }
 
-#go-back-button {
+/*userProfile.ejs*/
+
+.top-row {
   margin: 10px;
 }
 
-/*userProfile.ejs*/
+#new-post {
+  margin: 20px auto;
+  width: 500px;
+}
+
 .user-posts {
   height: 550px;
   width: 1300px;

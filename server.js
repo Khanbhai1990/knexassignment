@@ -64,13 +64,14 @@ app.post('/users', function(req, res) {
   })
 });
 
-//displays specific user's profile
+//displays specific user's profile and their posts
 app.get('/users/:id', function(req, res) {
   knex('users')
   .where('id', req.params.id)
   .then((user) => {
     knex('posts')
     .where('user_id', req.params.id)
+    .orderBy('id', 'desc')
     .then((posts) => {
       res.render('userProfile', {
         user: user[0],
@@ -81,7 +82,38 @@ app.get('/users/:id', function(req, res) {
       console.log(err);
       res.sendStatus(400);
     });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(400);
+  })
 
+  // I don't like the data this returns... Array of objects showing the same user info with different commments
+  // knex.from('users')
+  // .join('posts', 'posts.user_id', 'users.id')
+  // .where('posts.user_id', req.params.id)
+  // .then((result) => {
+  //   console.log(result);
+  //   res.json(result);
+  // })
+  // .catch((err) => {
+  //   console.log(err);
+  //   res.sendStatus(400);
+  // })
+
+});
+
+app.post('/users/:id/posts', function(req, res) {
+  let newPost = {
+    content: req.body.content,
+    user_id: Number(req.params.id)
+  }
+  console.log(newPost);
+  knex('posts')
+  .insert(newPost, '*')
+  .then((update) => {
+    console.log(update);
+    res.redirect(`/users/${req.params.id}`);
   })
   .catch((err) => {
     console.log(err);
