@@ -66,6 +66,29 @@ app.post('/users', function(req, res) {
 
 //displays specific user's profile and their posts
 app.get('/users/:id', function(req, res) {
+  // knex('users')
+  // .where('id', req.params.id)
+  // .then((user) => {
+  //   knex('posts')
+  //   .where('user_id', req.params.id)
+  //   .orderBy('id', 'desc')
+  //   .then((posts) => {
+  //     res.render('userProfile', {
+  //       user: user[0],
+  //       posts: posts
+  //     });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     res.sendStatus(400);
+  //   });
+  // })
+  // .catch((err) => {
+  //   console.log(err);
+  //   res.sendStatus(400);
+  // })
+
+
   knex('users')
   .where('id', req.params.id)
   .then((user) => {
@@ -73,10 +96,19 @@ app.get('/users/:id', function(req, res) {
     .where('user_id', req.params.id)
     .orderBy('id', 'desc')
     .then((posts) => {
-      res.render('userProfile', {
-        user: user[0],
-        posts: posts
-      });
+      knex('comments')
+      .join('posts', 'posts.id', 'comment_post_id')
+      .then((comments) => {
+        res.render('userProfile', {
+          user: user[0],
+          posts: posts,
+          comments: comments
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -87,6 +119,7 @@ app.get('/users/:id', function(req, res) {
     console.log(err);
     res.sendStatus(400);
   })
+
 
   // I don't like the data this returns... Array of objects showing the same user info with different commments
   // knex.from('users')

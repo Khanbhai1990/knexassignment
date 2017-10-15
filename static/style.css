@@ -73,8 +73,8 @@ i {
 }
 
 #comments {
-  font-size: 5px;
-  text-align: right;
+  background-color: transparent;
+
 }
 
 #comment-icon {
