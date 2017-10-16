@@ -72,11 +72,6 @@ i {
   color: white;
 }
 
-#comments {
-  background-color: transparent;
-
-}
-
 #comment-icon {
   margin-top: 5px;
 }
@@ -87,4 +82,12 @@ i {
   width: 100%;
   justify-content: center;
   border-bottom: 1px solid white;
+}
+
+.comment-modal {
+  height: 300px;
+}
+
+.enter-comment {
+  margin: 100px auto;
 }

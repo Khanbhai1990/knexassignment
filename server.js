@@ -136,6 +136,7 @@ app.get('/users/:id', function(req, res) {
 
 });
 
+//add new post to database
 app.post('/users/:id/posts', function(req, res) {
   let newPost = {
     content: req.body.content,
@@ -145,13 +146,38 @@ app.post('/users/:id/posts', function(req, res) {
   knex('posts')
   .insert(newPost, '*')
   .then((update) => {
-    console.log(update);
+    console.log("NEW POST: ", update);
     res.redirect(`/users/${req.params.id}`);
   })
   .catch((err) => {
     console.log(err);
     res.sendStatus(400);
   })
+});
+
+
+//add new comment
+app.post('/users/:postID/comments', function(req, res) {
+
+  console.log(req.body);
+
+  let newComment = {
+    comment_content: req.body.comment_content,
+    comment_user_id: req.body.comment_user_id,
+    comment_post_id: req.params.postID
+  }
+
+  knex('comments')
+  .insert(newComment, '*')
+  .then((update) => {
+    console.log("NEW COMMENT: ", update);
+    res.redirect(`/users/${req.body.user_profile_id}`)
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(400);
+  })
+
 });
 
 //edits user's information

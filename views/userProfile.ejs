@@ -76,10 +76,10 @@
         <% for (let i = 0; i < posts.length; i++) { %>
           <div class="user-individual-post teal lighten-2 hoverable">
             <div class="">
-              <p id="content">"<%= posts[i].content %>"</p>
+              <p id="content" class="<%= posts[i].id %>">"<%= posts[i].content %>"</p>
             </div>
             <div class="">
-              <a id="comments" class="modal-trigger" href="#modal2"><i id="comment-icon" class="material-icons white-text">comment</i></a>
+              <a  id="<%= posts[i].id %>" class="modal-trigger comments" href="#modal2"><i id="comment-icon" class="material-icons white-text">comment</i></a>
             </div>
           </div>
         <% } %>
@@ -87,25 +87,35 @@
     </div>
 
   <!-- Modal Structure -->
-  <div id="modal2" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Info goes here</h4>
-      <p>and here</p>
-      <table>
-        <thead>
-          <th>hello</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Tables</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+  <div class="comment-modal">
+    <div id="modal2" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4 id="chosen-post" class="center"></h4>
+        <div class="container center enter-comment">
+          <form id="comment-form" action="index.html" method="post">
+
+            <input type="hidden" name="user_profile_id" value="<%= user.id %>">
+
+            <div class="input-field">
+              <i class="material-icons prefix">person</i>
+              <label for="comment_user_id">Enter your ID here</label>
+              <input type="text" name="comment_user_id" value="">
+            </div>
+
+            <div class="input-field">
+              <i class="material-icons prefix">comment</i>
+              <label for="comment_content">Enter your comment here</label>
+              <input type="text" name="comment_content" value="">
+            </div>
+
+            <input class="btn" type="submit" name="" value="Post Comment">
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
+
 
   </body>
 </html>

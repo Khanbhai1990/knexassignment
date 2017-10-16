@@ -16,8 +16,27 @@ $(document).ready(function() {
   $(cancelButton).click(function(event) {
     event.preventDefault();
     $(newUserForm).slideUp(1000);
-
   });
 
+  let comment = document.getElementsByClassName('comments');
+  console.log(comment);
+  $(comment).click(function() {
+    let postID = $(this).attr('id');
+
+    let post = document.getElementsByClassName(`${postID}`)[0];
+
+    let chosenPostModal = document.getElementById('chosen-post');
+    chosenPostModal.innerHTML = post.innerHTML;
+
+
+
+    // console.log(post.innerHTML);
+
+    let postComment = document.getElementById('comment-form');
+    $(postComment).attr('action', `/users/${postID}/comments`);
+    console.log(postComment);
+
+    // alert($(this).attr('id'));
+  });
 
 });
