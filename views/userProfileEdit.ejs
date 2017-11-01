@@ -18,14 +18,19 @@
       <form class="" action="/users/<%= id %>/edit" method="post">
         <label for="id">ID</label>
         <input class="italic" type="text" name="id" value="<%= id %>" disabled>
+
         <label for="first_name">First Name</label>
         <input class="italic" type="text" name="first_name" value="<%= first_name %>">
+
         <label for="last_name">Last Name</label>
         <input class="italic" type="text" name="last_name" value="<%= last_name %>">
-        <label for="email"></label>
+
+        <label for="email">Email</label>
         <input class="italic" type="text" name="email" value="<%= email %>">
+
         <label for="age">Age</label>
         <input class="italic" type="text" name="age" value="<%= age %>">
+        
         <input class="btn" type="submit" value="Submit">
       </form>
     </div>

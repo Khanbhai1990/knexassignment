@@ -19,6 +19,7 @@ app.get('/users', function(req, res) {
   res.redirect('/users/page/1');
 });
 
+//pagination
 app.get('/users/page/:pageNumber', function(req, res) {
   let limitPerPage = 10;
   let pageNumber = req.params.pageNumber;
@@ -53,7 +54,7 @@ app.get('/users/page/:pageNumber', function(req, res) {
 //creates a new user
 app.post('/users', function(req, res) {
   knex('users')
-  .insert(req.body, '*')
+  .insert(req.body, '*') //remove req.body, the user can change the input fields names at any time and consequently change the table columns that are being changed i.e.: the user can change input name from "user.age" to "user.id" causing this post request to create a user with no age, but with an id that has a chance of being duplicated
   .then((newUser) => {
     console.log(newUser);
     res.redirect('/users');
